@@ -1,0 +1,8 @@
+# Temporary & Preview Files
+*.bak
+*.png
+*.jpg
+*.jpeg
+*.tmp
+.DS_Store
+Thumbs.db
