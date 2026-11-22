@@ -337,6 +337,11 @@ var RU_DRUG_DATA = {
 };
 
 function dField(d, key){
+  if(key==='status'&&d.cls==='dr-allowed'){
+    var cx=checkerContext();
+    if(cx.product==='supplement')return isRu()?'Не подтверждено для добавки — проверяйте все ингредиенты':'Qo‘shimcha uchun tasdiqlanmagan — barcha faol moddalarni tekshiring';
+    return isRu()?'Не найдено в учебной базе как запрещённое вещество':'O‘quv bazasida taqiqlangan modda sifatida topilmadi';
+  }
   if(isRu()){
     var ru = RU_DRUG_DATA[d.name];
     if(ru && ru[key] !== undefined) return ru[key];
@@ -365,6 +370,29 @@ function card(m,q,opts){
     return '<details class="nxr nxr-'+kind+'"'+(kind==='red'?' open':'')+'><summary>'+head+'</summary>'+fix+det+'</details>';
   }
   return '<div class="nxr nxr-'+kind+'">'+head+fix+det+'</div>';
+}
+/* The search can identify names and aliases, but it must never turn a fuzzy
+   match into medical clearance. These fields make the context visible and
+   keep an unknown route, dose or product formulation in the safe state. */
+function checkerContext(){
+  function val(id){var e=$('#'+id);return e?e.value:'unknown';}
+  function label(id){var e=$('#'+id);return e&&e.options[e.selectedIndex]?e.options[e.selectedIndex].text:'—';}
+  return {product:val('check-product-type'),route:val('check-route'),timing:val('check-timing'),dose:val('check-dose'),
+    productLabel:label('check-product-type'),routeLabel:label('check-route'),timingLabel:label('check-timing')};
+}
+function safetyGate(ctx){
+  var ru=isRu(),isSupp=ctx.product==='supplement',incomplete=ctx.route==='unknown'||ctx.timing==='unknown'||!ctx.dose;
+  var title=ru?'Результат предварительной проверки':'Dastlabki tekshiruv natijasi';
+  var context=ru?'Контекст':'Tekshiruv tafsilotlari';
+  var warning=isSupp
+    ?(ru?'БАДы и спортивные добавки не получают статус «разрешено»: состав и риск загрязнения необходимо проверять отдельно.':'BAD va sport qo‘shimchalari uchun “ruxsat etilgan” xulosasi berilmaydi: tarkib va kontaminatsiya xavfi alohida tekshiriladi.')
+    :(incomplete
+      ?(ru?'Не хватает данных о способе приёма, дозе или соревновательном статусе. Не принимайте препарат до уточнения.':'Qabul qilish usuli, doza yoki musobaqa holati yetarli emas. Aniqlashtirmasdan qabul qilmang.')
+      :(ru?'Статус зависит от действующего вещества, дозы, пути введения и времени соревнования.':'Status faol modda, doza, qabul qilish yo‘li va musobaqa vaqtiga bog‘liq.'));
+  var src=ru?'Официальная проверка':'Rasmiy tekshiruv';
+  return '<div class="nx-safety '+(isSupp||incomplete?'nx-safety-warn':'')+'"><div class="nx-safety-title">🛡️ '+title+'</div>'+
+    '<div class="nx-safety-context"><strong>'+context+':</strong> '+esc(ctx.productLabel)+' · '+esc(ctx.routeLabel)+' · '+esc(ctx.timingLabel)+(ctx.dose?' · '+esc(ctx.dose):'')+'</div>'+
+    '<p>'+warning+'</p><div class="nx-safety-links"><strong>'+src+':</strong><a href="https://www.wada-ama.org/en/prohibited-list" target="_blank" rel="noopener noreferrer">WADA Prohibited List</a><a href="https://www.globaldro.com/" target="_blank" rel="noopener noreferrer">Global DRO</a></div></div>';
 }
 function chips(list){
   return list.map(function(m){return '<button type="button" class="nxr-chip nxr-c-'+kindOf(m.drug)+'" data-q="'+esc(dField(m.drug,'name'))+'">'+ICON[kindOf(m.drug)]+' '+esc(dField(m.drug,'name'))+'</button>';}).join('');
@@ -416,10 +444,10 @@ function splitQ(q){
   return q.split(/[,;+\n\/]+|\s(?:va|и|and|&)\s/i).map(function(s){return s.trim();}).filter(Boolean).slice(0,6);
 }
 function run(q){
-  var t0=(window.performance&&performance.now)?performance.now():Date.now(),t=T();
+  var t0=(window.performance&&performance.now)?performance.now():Date.now(),t=T(),ctx=checkerContext();
   var parts=splitQ(q);if(!parts.length)return {html:'',nf:false,tops:[]};
   var multi=parts.length>1,res=parts.map(function(p){return {q:p,o:one(p,multi)};});
-  var html='<div class="nxr-wrap">';
+  var html='<div class="nxr-wrap">'+safetyGate(ctx);
   if(multi){
     var c={red:0,mix:0,ok:0,nf:0};
     res.forEach(function(x){var k=x.o.kind;if(k==='red')c.red++;else if(k==='blue'||k==='orange')c.mix++;else if(k==='green'||k==='amber')c.ok++;else c.nf++;});
@@ -589,3 +617,4 @@ window.switchChecker = function(tab) {
   tdb.style.borderBottomColor = tab === 'db' ? '#f0c040' : 'transparent';
   tdb.style.fontWeight = tab === 'db' ? '700' : '600';
 };
+
