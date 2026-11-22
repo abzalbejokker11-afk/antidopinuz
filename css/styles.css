@@ -1162,3 +1162,118 @@ html.nx.dark .v11-links a{background:#132347;color:#7dd3fc;border-color:rgba(56,
 html.nx.dark .nxr,html.nx.dark #nx-sug{background:rgba(15,27,56,.97);color:#e2e8f0}
 html.nx.dark .nxr-nm,html.nx.dark .nxr-grid b,html.nx.dark .nxr-fix b,html.nx.dark .nx-sg{color:#f8fafc}
 html.nx.dark .nxr-note,html.nx.dark .nxr-alt,html.nx.dark .nxr-act ul,html.nx.dark .nxr-fix{color:#cbd5e1}
+
+/* ── LIQUID LIGHT DESIGN SYSTEM ──────────────────────────────────────────
+   A bright, calm visual layer for the education portal.  It deliberately
+   sits at the end of the stylesheet so existing interactions stay intact. */
+:root{
+  --liquid-ink:#10233e;
+  --liquid-muted:#60738c;
+  --liquid-line:rgba(102,145,188,.20);
+  --liquid-glass:rgba(255,255,255,.62);
+  --liquid-sky:#eaf6ff;
+  --liquid-mint:#e8fff8;
+  --liquid-violet:#f1edff;
+  --liquid-shadow:0 18px 45px rgba(48,93,139,.10), inset 0 1px 0 rgba(255,255,255,.9);
+}
+html.nx body{
+  background:
+    radial-gradient(900px 520px at -8% -10%,rgba(74,180,255,.30),transparent 62%),
+    radial-gradient(760px 520px at 105% 8%,rgba(99,239,197,.22),transparent 65%),
+    radial-gradient(760px 520px at 52% 108%,rgba(159,136,255,.13),transparent 66%),
+    #f8fbff;
+  color:var(--liquid-ink);
+}
+html.nx body::before{
+  opacity:1;
+  background:
+    radial-gradient(34% 28% at 10% 8%,rgba(110,198,255,.19),transparent 74%),
+    radial-gradient(30% 27% at 91% 16%,rgba(101,232,191,.14),transparent 75%);
+}
+html.nx body::after{opacity:.17;background-image:linear-gradient(rgba(89,143,193,.13) 1px,transparent 1px),linear-gradient(90deg,rgba(89,143,193,.13) 1px,transparent 1px)}
+html.nx header{
+  top:12px;margin:12px 24px 0;border-radius:22px;
+  background:rgba(255,255,255,.72)!important;
+  border:1px solid rgba(255,255,255,.86)!important;
+  box-shadow:0 16px 45px rgba(48,93,139,.13),inset 0 1px 0 #fff;
+  backdrop-filter:blur(22px) saturate(145%);
+  -webkit-backdrop-filter:blur(22px) saturate(145%);
+}
+html.nx .header-wrap{height:68px}
+html.nx .logo-icon{border-radius:14px;background:linear-gradient(135deg,#1878e8,#35c7b4 58%,#8c78ff);box-shadow:0 9px 20px rgba(39,120,210,.26)}
+html.nx .logo-text .logo-title{font-size:13px;letter-spacing:.7px;color:var(--liquid-ink)}
+html.nx header nav a{padding:7px 10px;border-radius:99px;color:#526b87}
+html.nx header nav a:hover{background:rgba(88,173,255,.13);color:#176fc5}
+html.nx .lang-toggle{background:rgba(238,248,255,.78);border-color:var(--liquid-line)}
+html.nx .lang-toggle button.active{background:linear-gradient(135deg,#1678dd,#48b5ff);box-shadow:0 5px 13px rgba(27,118,215,.22)}
+html.nx #theme-btn,html.nx #sound-btn{background:rgba(255,255,255,.56)!important;border-color:var(--liquid-line)!important}
+html.nx .hero{
+  margin:0 14px;border:1px solid rgba(255,255,255,.55);border-radius:0 0 34px 34px;
+  min-height:430px;padding:92px 28px 58px;
+  background:
+    radial-gradient(circle at 79% 20%,rgba(142,255,225,.60),transparent 18%),
+    radial-gradient(circle at 19% 74%,rgba(104,191,255,.42),transparent 28%),
+    linear-gradient(120deg,#092b62 0%,#125d9d 42%,#167b96 100%);
+  box-shadow:0 25px 60px rgba(20,78,130,.18);
+}
+html.nx .hero::before{background:linear-gradient(110deg,rgba(5,25,66,.37),rgba(8,71,119,.18) 60%,rgba(11,106,117,.22))}
+html.nx .hero::after{width:460px;height:460px;right:-110px;bottom:-260px;background:rgba(244,255,255,.20);filter:blur(1px)}
+html.nx .hero h1{font-size:clamp(34px,4.5vw,58px);line-height:1.02;letter-spacing:-1.8px;text-shadow:none;max-width:650px}
+html.nx .hero h1 em{color:#b9ffec}
+html.nx .author-box{border-radius:18px!important;background:rgba(255,255,255,.13)!important;border:1px solid rgba(255,255,255,.28)!important;backdrop-filter:blur(16px)}
+html.nx .hero-stats{gap:10px;margin-top:18px}
+html.nx .stat-item,html.nx .deco-card{
+  background:rgba(255,255,255,.86)!important;border:1px solid rgba(255,255,255,.92)!important;
+  border-radius:18px;box-shadow:0 14px 32px rgba(7,40,88,.14),inset 0 1px 0 #fff;
+  backdrop-filter:blur(14px);
+}
+html.nx .stat-item{padding:11px 15px;min-width:88px}
+html.nx .stat-item .num{color:#126fd2}.html.nx .deco-card p{color:#1a4d78}
+html.nx .section-label{display:inline-flex;align-items:center;gap:6px;color:#1676cc;background:rgba(219,242,255,.72);border:1px solid rgba(99,174,230,.26);border-radius:99px;padding:5px 10px;letter-spacing:1.25px}
+html.nx .section-title{font-size:clamp(28px,3.1vw,42px);letter-spacing:-1.2px;color:var(--liquid-ink)}
+html.nx .section-sub{color:var(--liquid-muted);font-size:15px}
+html.nx .role-section{padding-top:72px;padding-bottom:70px}
+html.nx .role-grid{gap:18px}
+html.nx .role-card{
+  border:1px solid rgba(255,255,255,.92)!important;border-radius:24px;
+  background:var(--liquid-glass)!important;box-shadow:var(--liquid-shadow)!important;
+  backdrop-filter:blur(18px) saturate(135%);-webkit-backdrop-filter:blur(18px) saturate(135%);
+}
+html.nx .role-card::before{height:4px;opacity:.86}
+html.nx .role-card:hover{transform:translateY(-7px) scale(1.01);box-shadow:0 26px 52px rgba(40,91,143,.17)!important}
+html.nx .role-card h3{color:#173b63}.html.nx .role-card p{color:#60738c}
+html.nx .rc-tag{background:rgba(239,248,255,.78);border-color:rgba(94,164,221,.20);color:#2877bd}
+html.nx .rc-arrow{background:linear-gradient(135deg,#e8f6ff,#e7fff8)!important;color:#1474c4!important}
+html.nx .extra-card{
+  border:1px solid rgba(255,255,255,.48);border-radius:22px;
+  box-shadow:var(--liquid-shadow);backdrop-filter:blur(15px);
+}
+html.nx .ec-film{background:linear-gradient(135deg,rgba(78,29,57,.92),rgba(123,52,71,.82))}
+html.nx .ec-case{background:linear-gradient(135deg,rgba(17,71,115,.92),rgba(32,128,150,.84))}
+html.nx .ec-gloss{background:linear-gradient(135deg,rgba(17,104,88,.92),rgba(37,141,112,.83))}
+html.nx .ec-audio{background:linear-gradient(135deg,rgba(77,52,141,.92),rgba(127,89,193,.83))}
+html.nx .checker-section,html.nx .faq-section{background:transparent;border-color:rgba(107,156,200,.12)}
+html.nx .checker-box,html.nx .faq-item,html.nx .toza-card,html.nx .toza-stat,html.nx .toza-princ,html.nx .link-card{
+  background:rgba(255,255,255,.70)!important;border:1px solid rgba(255,255,255,.90)!important;
+  box-shadow:var(--liquid-shadow)!important;backdrop-filter:blur(18px);
+}
+html.nx .checker-box{border-radius:26px;padding:34px}
+html.nx .checker-input-wrap input,html.nx .search-bar input,html.nx .faq-search input{
+  background:rgba(255,255,255,.82);border-color:rgba(94,156,209,.25);border-radius:15px;
+}
+html.nx .checker-btn,html.nx .quiz-btn{background:linear-gradient(135deg,#1679dd,#37b9d4);box-shadow:0 10px 22px rgba(25,124,212,.22)}
+html.nx .toza-section{background:transparent;border-color:rgba(107,156,200,.12)}
+html.nx .toza-card:hover,html.nx .toza-stat:hover,html.nx .toza-princ:hover{transform:translateY(-5px);box-shadow:0 22px 42px rgba(44,105,137,.14)!important}
+html.nx .faq-q{background:transparent;color:#1b4168}.html.nx .faq-a{background:rgba(240,249,255,.45)}
+@media(max-width:900px){
+  html.nx header{top:8px;margin:8px 10px 0;border-radius:18px}
+  html.nx .hero{margin:0 6px;border-radius:0 0 24px 24px;padding-top:94px;min-height:auto}
+}
+@media(max-width:600px){
+  html.nx .hero{padding:84px 14px 28px}
+  html.nx .hero h1{font-size:clamp(29px,9vw,40px)!important;letter-spacing:-1px}
+  html.nx .role-section{padding:48px 16px}
+  html.nx .role-card{border-radius:20px}
+  html.nx .checker-box{padding:20px}
+}
+
