@@ -121,7 +121,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/styles.css?v=20261112_v15">
+<link rel="stylesheet" href="css/styles.css?v=20261123_v16">
 </head>
 <body>
 
@@ -136,7 +136,7 @@
     </div>
     <nav>
       <a onclick="scrollToSec('roles')">Modullar</a>
-      <a onclick="scrollToSec('checker-sec')">🤖 AI Dori</a>
+      <a onclick="scrollToSec('checker-sec')">🧪 Dori qidiruv</a>
       <a onclick="scrollToSec('dashboard-sec')">📊 Dashboard</a>
       <a onclick="scrollToSec('scenario-sec')">🎯 Trening</a>
       <a onclick="scrollToSec('wada-sec')">WADA</a>
@@ -161,7 +161,7 @@
 </header>
 <nav class="mobile-nav" id="mobile-nav">
   <a onclick="scrollToSec('roles');closeMobileNav()">📚 Modullar</a>
-  <a onclick="scrollToSec('checker-sec');closeMobileNav()">🤖 AI Dori</a>
+  <a onclick="scrollToSec('checker-sec');closeMobileNav()">🧪 Dori qidiruv</a>
   <a onclick="scrollToSec('dashboard-sec');closeMobileNav()">📊 Dashboard</a>
   <a onclick="scrollToSec('scenario-sec');closeMobileNav()">🎯 Trening</a>
   <a onclick="scrollToSec('wada-sec');closeMobileNav()">🧪 WADA</a>
@@ -395,35 +395,50 @@
   </div>
 </section>
 
-<!-- AI DORI TEKSHIRGICH -->
+<!-- XAVFSIZ DORI QIDIRUVI -->
 <section id="checker-sec" style="background:linear-gradient(160deg,#0a1f3d,#1a3a6b);padding:56px 0;border-top:2px solid rgba(255,255,255,.1)">
   <div style="max-width:1320px;margin:0 auto;padding:0 24px">
     <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px;justify-content:center">
-      <span style="background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;font-size:10px;font-weight:800;padding:3px 10px;border-radius:20px;letter-spacing:1px">🤖 AI POWERED</span>
-      <div class="section-label" style="color:var(--gold-light);margin:0">Özbekistonda birinçi</div>
+      <span style="background:linear-gradient(135deg,#1684d8,#37c6ad);color:#fff;font-size:10px;font-weight:800;padding:3px 10px;border-radius:20px;letter-spacing:1px">WADA 2026 · XAVFSIZ QIDIRUV</span>
+      <div class="section-label" style="color:var(--gold-light);margin:0">Dastlabki tekshiruv</div>
     </div>
-    <div class="section-title" id="ai-title" style="color:#fff;text-align:center">AI Dori Tekşirgiç</div>
-    <div class="section-sub" id="ai-sub" style="color:#a8c4e0;text-align:center;margin-left:auto;margin-right:auto">Istalgan dori, qöşimça yoki mahsulot nomini yozing — AI Dori Tekşirgiç WADA 2026 qoidalari asosida javob beradi</div>
+    <div class="section-title" id="ai-title" style="color:#fff;text-align:center">Aqlli dori qidiruvi</div>
+    <div class="section-sub" id="ai-sub" style="color:#a8c4e0;text-align:center;margin-left:auto;margin-right:auto">Faol modda, qabul qilish usuli va musobaqa holatini kiriting. Natija — dastlabki yo‘riqnoma; yakuniy tasdiqni rasmiy manbadan oling.</div>
 
     <div style="background:rgba(255,255,255,.05);border:1.5px solid rgba(255,255,255,.12);border-radius:20px;padding:28px;max-width:860px;margin:0 auto;text-align:left">
       <!-- Tabs -->
       <div style="display:flex;gap:0;border-bottom:1.5px solid rgba(255,255,255,.12);margin-bottom:22px">
-        <button onclick="switchChecker('ai')" id="tab-ai" style="padding:9px 18px;border:none;background:none;cursor:pointer;font-size:13px;font-weight:700;color:#f0c040;border-bottom:2px solid #f0c040;margin-bottom:-2px;font-family:inherit">🤖 AI Tekşirgiç</button>
+        <button onclick="switchChecker('ai')" id="tab-ai" style="padding:9px 18px;border:none;background:none;cursor:pointer;font-size:13px;font-weight:700;color:#f0c040;border-bottom:2px solid #f0c040;margin-bottom:-2px;font-family:inherit">🧪 Aqlli qidiruv</button>
         <button onclick="switchChecker('db')" id="tab-db" style="padding:9px 18px;border:none;background:none;cursor:pointer;font-size:13px;font-weight:600;color:#8faac8;border-bottom:2px solid transparent;margin-bottom:-2px;font-family:inherit">📋 Tezkor Qidiruv</button>
       </div>
 
-      <!-- AI Tab -->
+      <!-- Smart safety search -->
       <div id="checker-ai">
         <div style="display:flex;gap:10px;margin-bottom:14px">
-          <input id="ai-drug-input" type="text" oninput="aiLiveSuggest()" placeholder="Masalan: Ibuprofen, Salbutamol inhaler, protein kukuni, Vitamin C..."
+          <input id="ai-drug-input" type="text" oninput="aiLiveSuggest()" placeholder="Faol modda yoki dori nomi: Ibuprofen, Salbutamol..."
             style="flex:1;padding:13px 16px;border:2px solid rgba(255,255,255,.15);border-radius:12px;font-size:14px;background:rgba(255,255,255,.08);color:#fff;font-family:inherit;outline:none"
             onkeydown="if(event.key==='Enter')aiCheckDrug()"
             onfocus="this.style.borderColor='var(--gold-light)'" onblur="this.style.borderColor='rgba(255,255,255,.15)'">
           <button onclick="aiCheckDrug()" id="ai-btn"
             style="background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--navy);border:none;padding:13px 22px;border-radius:12px;font-size:14px;font-weight:800;cursor:pointer;white-space:nowrap;font-family:inherit">
-            🤖 AI Tekşir
+            🧪 Tekshirish
           </button>
         </div>
+        <div class="checker-context" aria-label="Tekshiruv tafsilotlari">
+          <label>Mahsulot turi
+            <select id="check-product-type"><option value="medicine">Dori</option><option value="supplement">BAD / sport qo‘shimchasi</option><option value="unknown">Aniq emas</option></select>
+          </label>
+          <label>Qabul qilish usuli
+            <select id="check-route"><option value="unknown">Aniq emas</option><option value="oral">Og‘iz orqali</option><option value="inhaled">Inhaler</option><option value="injection">Inyeksiya / infuziya</option><option value="topical">Krem / tomchi / mahalliy</option></select>
+          </label>
+          <label>Holat
+            <select id="check-timing"><option value="unknown">Musobaqa holati aniq emas</option><option value="in-competition">Musobaqa davri</option><option value="out-of-competition">Musobaqadan tashqari</option></select>
+          </label>
+          <label>Doza (ixtiyoriy)
+            <input id="check-dose" type="text" maxlength="40" placeholder="Masalan: 2 puff, 400 mkg">
+          </label>
+        </div>
+        <p class="checker-disclaimer">⚠️ Bu vosita tibbiy maslahat ham, rasmiy ruxsat ham emas. Qadoqdagi barcha faol moddalarni tekshiring; musobaqa oldidan UzNADO/federatsiya va shifokor bilan tasdiqlang.</p>
         <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px" id="ai-quick-list"></div>
         <div id="ai-result"></div>
       </div>
@@ -1298,7 +1313,8 @@
 
 <button id="scrollTop" title="Yuqoriga" aria-label="Yuqoriga" onclick="window.scrollTo({top:0,behavior:'smooth'})">⬆</button>
 <script src="js/data.js?v=20261112_v15" defer></script>
-<script src="js/search.js?v=20261112_v15" defer></script>
+<script src="js/search.js?v=20261123_v16" defer></script>
 <script src="js/app.js?v=20261112_v15" defer></script>
 </body>
 </html>
+
